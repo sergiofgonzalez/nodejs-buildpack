@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
+export PACK_STACK_ID="org.cloudfoundry.stacks.$CF_STACK"
 
-BP=$(dirname "$(dirname $0)")
+BUILD_DIR=$1
 
-PACK_STACK_ID="org.cloudfoundry.stacks.$CF_STACK" \
-"$BP/bin/v3-detector" \
--buildpacks "$BP/cnbs" \
--group $1/../group.toml \
--launch "$1/.." \
--order "$BP/order.toml" \
--plan $1/../plan.toml
+BP_DIR=$(dirname "$(dirname $0)")
 
-exit $?
+"$BP_DIR/bin/v3-detector" \
+-buildpacks "$BP_DIR/cnbs" \
+-group "$BUILD_DIR/../group.toml" \
+-launch "$BUILD_DIR/.." \
+-order "$BP_DIR/order.toml" \
+-plan "$BUILD_DIR/../plan.toml"

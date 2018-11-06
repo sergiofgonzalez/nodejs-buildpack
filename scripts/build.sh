@@ -7,6 +7,7 @@ source .envrc
 GOOS=linux go build -ldflags="-s -w" -o bin/v3-detector github.com/buildpack/lifecycle/cmd/detector
 GOOS=linux go build -ldflags="-s -w" -o bin/v3-builder github.com/buildpack/lifecycle/cmd/builder
 
+# TODO : iterate over the buildpacks listed in the order.toml file instead of hand-coding these
 mkdir -p cnbs/org.cloudfoundry.buildpacks.nodejs/0.0.1
 pushd cnbs/org.cloudfoundry.buildpacks.nodejs/0.0.1
     wget https://github.com/cloudfoundry/nodejs-cnb/releases/download/v0.0.1-alpha/nodejs-cnb.tgz
@@ -20,6 +21,3 @@ pushd cnbs/org.cloudfoundry.buildpacks.npm/0.0.1
     tar xzvf npm-cnb.tgz
     rm npm-cnb.tgz
 popd
-
-GOOS=linux go build -ldflags="-s -w" -o bin/supply ./src/nodejs/supply/cli
-GOOS=linux go build -ldflags="-s -w" -o bin/finalize ./src/nodejs/finalize/cli
