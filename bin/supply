@@ -24,8 +24,9 @@ ${BP_DIR}/bin/v3-builder \
 -plan "$LAUNCH_DIR/plan.toml" \
 -platform "$LAUNCH_DIR"
 
-rm "$FAKE_LAUNCH_DIR/app"
-
 # TODO : iterate over the buildpacks listed in the order.toml file instead of hand-coding these
 mv "$FAKE_LAUNCH_DIR/org.cloudfoundry.buildpacks.nodejs" "$DEPS_DIR/$DEPS_IDX"
 mv "$FAKE_LAUNCH_DIR/org.cloudfoundry.buildpacks.npm" "$DEPS_DIR/$DEPS_IDX"
+mv "$FAKE_LAUNCH_DIR/config/metadata.toml" "$BUILD_DIR"
+
+rm -rf "$FAKE_LAUNCH_DIR"
