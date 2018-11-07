@@ -9,3 +9,5 @@ command=$(grep "command" "$BUILD_DIR/metadata.toml")
 if [[ "$command" =~ command\ *=\ *\"(.*)\"$ ]]; then
     echo "  web: ${BASH_REMATCH[1]}"
 fi
+
+rm "$BUILD_DIR/metadata.toml"

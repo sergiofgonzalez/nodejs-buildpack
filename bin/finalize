@@ -17,5 +17,6 @@ mv $DEPS_DIR/$DEPS_IDX/org.cloudfoundry.buildpacks.nodejs/node/profile.d/* "$PRO
 mv $DEPS_DIR/$DEPS_IDX/org.cloudfoundry.buildpacks.npm/npm/profile.d/* "$PROFILE_DIR"
 
 
-printf "export PATH=/home/vcap/deps/$DEPS_IDX/org.cloudfoundry.buildpacks.nodejs/node/bin:$PATH" > \
+# TODO : iterate over the buildpacks listed in the order.toml and add any to the path that have a bin
+printf "export PATH=\$DEPS_DIR/$DEPS_IDX/org.cloudfoundry.buildpacks.nodejs/node/bin:$PATH" > \
 "$PROFILE_DIR/$DEPS_IDX-$PACK_STACK_ID.sh"
