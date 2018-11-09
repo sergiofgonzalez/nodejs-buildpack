@@ -6,5 +6,5 @@ echo 'default_process_types:'
 if [[ "${OPTIMIZE_MEMORY:-}" = "true" ]]; then
   echo '  web: NODE_OPTIONS="--max_old_space_size=$(( $MEMORY_AVAILABLE * 75 / 100 ))" npm start'
 else
-  echo '  web: npm start'
+  echo '  worker: npm start'
 fi
